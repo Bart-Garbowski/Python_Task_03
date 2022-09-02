@@ -75,7 +75,7 @@ while True:
         else:
             print("Brak wystarczających środków na koncie!")
             continue
-        msg = f"Operacja na saldzie, nowe saldo po operacji = {saldo}. Komentarz: {koment}. Ile: {price} "
+        msg = f"Operacja na saldzie, nowe saldo po operacji = {saldo}. Komentarz: {koment}. Ile: {price} PLN"
         operation_history.append(msg)
 
     elif command == "sprzedaz":
@@ -105,7 +105,10 @@ while True:
     elif command == "przeglad":
         start = input("Od: ")
         end = input("Do: ")
-        start = int(start)
-        end = int(end)
-        for operation in operation_history[start:end]:
-            print(operation)
+        if start == '' and end == '':
+            print(*operation_history, sep="\n")
+        else:
+            start = int(start)
+            end = int(end)
+            for operation in operation_history[start:end]:
+                print(operation)
